@@ -1,24 +1,26 @@
 from flask import Flask, request, jsonify
 from dotenv import load_dotenv
 from ai_generator import generate_blog_post
-from seo_fetcher import fetch_seo_metrics
 import os
 from apscheduler.schedulers.background import BackgroundScheduler
 from datetime import datetime
 
 load_dotenv()
-print("OPENAI_API_KEY is:", os.getenv("OPENAI_API_KEY"))
 
 app = Flask(__name__)
-
 scheduler = BackgroundScheduler()
 scheduler.start()
 
-# Daily job with a fixed keyword
+# Daily scheduled blog generation for fixed keyword
 def daily_generate():
     keyword = "wireless earbuds"
     post, metrics = generate_blog_post(keyword)
     filename = f"blog_posts/{keyword.replace(' ', '_')}_{datetime.now().date()}.md"
+    
+    # Make sure the blog_posts directory exists
+    import os as os_module
+    os_module.makedirs("blog_posts", exist_ok=True)
+
     with open(filename, "w") as f:
         f.write(post)
     print(f"[{datetime.now()}] Blog saved to {filename}")
