@@ -8,7 +8,7 @@ This app generates a blog post using OpenAI based on a keyword. Includes SEO met
 2. Create a '.env' file with your OpenAI key (all you must do is replace it and in your terminal use the two lines to do the change):
    touch .env
    open .env
-   change the OpenAI key to yours
+   Change the OpenAI key to yours
 
 ## Please find below the steps for set up on your MAC Terminal, or you could alternatively use VS Code if you are using Windows
 
