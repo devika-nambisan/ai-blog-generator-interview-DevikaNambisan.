@@ -17,7 +17,8 @@ cd ai-blog-generator-interview-DevikaNambisan.
 python3 -m venv venv
 source venv/bin/activate
 pip install -r requirements.txt
-venv/bin/python/ -m flask run (for the local running and then u can use the browser to see)
+python app.py OR venv/bin/python/ -m flask run (for the local running and then u can use the browser to see) 
+
 
 
 ## Notes on Mocking
