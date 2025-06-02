@@ -5,9 +5,12 @@ This app generates a blog post using OpenAI based on a keyword. Includes SEO met
 ## Setup
 
 1. Clone the repo.
-2. Create a `.env` file with your OpenAI key:
+2. Create a '.env' file with your OpenAI key (all you must do is replace it and in your terminal use the two lines to do the change):
+   touch .env
+   open .env
+   change the OpenAI key to yours
 
-## Please find below the steps for set up on your MAC Terminal or you could alterantively use VS Code if you are using Windows
+## Please find below the steps for set up on your MAC Terminal, or you could alternatively use VS Code if you are using Windows
 
 ```bash
 git clone https://github.com/devika-nambisan/ai-blog-generator-interview-DevikaNambisan..git
@@ -19,10 +22,10 @@ python app.py OR venv/bin/python/ -m flask run (for the local running and then u
 
 
 
-Notes on the the use of Mock
+Notes on the use of Mock
 
 - SEO metrics are mocked using a simple random generator in `seo_fetcher.py`.
 - OpenAI calls in `ai_generator.py` are mocked by default (`USE_MOCK=True`) to avoid API quota issues
 - To enable real OpenAI API calls, set `USE_MOCK=False` and provide your own API key in `.env`.
 
-what an example local host call on broswer looks like: http://127.0.0.1:5000/generate?keyword=wireless%20earbuds
+What an example local host call on browser looks like: http://127.0.0.1:5000/generate?keyword=wireless%20earbuds
