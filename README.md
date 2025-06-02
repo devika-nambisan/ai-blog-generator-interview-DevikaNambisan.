@@ -25,4 +25,4 @@ python app.py OR venv/bin/python/ -m flask run (for the local running and then u
 - OpenAI calls in `ai_generator.py` are mocked by default (`USE_MOCK=True`) to avoid API quota issues and facilitate offline development.
 - To enable real OpenAI API calls, set `USE_MOCK=False` and provide your own API key in `.env`.
 
-example local host call on broswer: http://127.0.0.1:5000/generate?keyword=wireless%20earbuds
+what an example local host call on broswer looks like: http://127.0.0.1:5000/generate?keyword=wireless%20earbuds
