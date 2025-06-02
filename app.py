@@ -44,4 +44,5 @@ def generate():
     })
 
 if __name__ == '__main__':
+    daily_generate() #For Demo Only
     app.run(debug=True)
