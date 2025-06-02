@@ -19,7 +19,7 @@ python app.py OR venv/bin/python/ -m flask run (for the local running and then u
 
 
 
-## Notes on Mocking
+Notes on the the use of Mock
 
 - SEO metrics are mocked using a simple random generator in `seo_fetcher.py`.
 - OpenAI calls in `ai_generator.py` are mocked by default (`USE_MOCK=True`) to avoid API quota issues and facilitate offline development.
