@@ -7,6 +7,8 @@ from apscheduler.schedulers.background import BackgroundScheduler
 from datetime import datetime
 
 load_dotenv()
+print("OPENAI_API_KEY is:", os.getenv("OPENAI_API_KEY"))
+
 app = Flask(__name__)
 
 scheduler = BackgroundScheduler()
