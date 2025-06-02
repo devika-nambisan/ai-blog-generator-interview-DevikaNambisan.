@@ -2,6 +2,13 @@
 
 This app generates a blog post using OpenAI based on a keyword. Includes SEO metrics and placeholder affiliate links.
 
+# AI Blog Generator
+
+## Setup
+
+1. Clone the repo.
+2. Create a `.env` file with your OpenAI key:
+
 ## Please find below the steps for set up on your MAC Terminal or you could alterantively use VS Code if you are using Windows
 
 ```bash
