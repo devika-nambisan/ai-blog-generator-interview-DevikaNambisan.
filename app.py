@@ -23,6 +23,10 @@ def daily_generate():
 
 scheduler.add_job(daily_generate, 'interval', days=1)
 
+@app.route('/')
+def home():
+    return "Welcome to the AI Blog Generator! Use /generate?keyword=your_keyword to get a blog post."
+
 @app.route('/generate')
 def generate():
     keyword = request.args.get("keyword")
@@ -37,4 +41,3 @@ def generate():
 
 if __name__ == '__main__':
     app.run(debug=True)
-
