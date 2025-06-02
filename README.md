@@ -12,7 +12,7 @@ This app generates a blog post using OpenAI based on a keyword. Includes SEO met
 
 ## Please find below the steps for set up on your MAC Terminal, or you could alternatively use VS Code if you are using Windows
 
-1. ```bash
+1. cd into your folder where you would like to add your project (ex: cd ~/Documents)
 2. git clone https://github.com/devika-nambisan/ai-blog-generator-interview-DevikaNambisan..git
 3. cd ai-blog-generator-interview-DevikaNambisan.
 4. python3 -m venv venv
