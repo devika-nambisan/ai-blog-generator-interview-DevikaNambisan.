@@ -1,38 +1,63 @@
 import os
 import openai
-
-USE_MOCK = os.getenv("USE_MOCK", "true").lower() == "true"
+from seo_fetcher import fetch_seo_metrics
 
 openai.api_key = os.getenv("OPENAI_API_KEY")
+USE_MOCK = os.getenv("USE_MOCK", "true").lower() == "true"
 
 def generate_blog_post(keyword):
-    # Mock SEO metrics for consistent mock behavior or import from seo_fetcher.py if you want dynamic ones
-    from seo_fetcher import fetch_seo_metrics
     seo_metrics = fetch_seo_metrics(keyword)
-
+    
     if USE_MOCK:
-        # Return a fake blog post with placeholders, no OpenAI call
+        # Return a mock blog post string (700 words approx can be adjusted)
         blog_post = f"""
-# {keyword} - The Ultimate Guide
+# {keyword.capitalize()}: The Ultimate Guide
 
-**Introduction**  
-Discover the amazing benefits of {keyword} in this comprehensive guide.
+**Introduction**
 
-**Key Benefits**  
-- Benefit 1 of {keyword}  
-- Benefit 2 of {keyword}  
+Looking for the best {keyword}? You're in the right place! This guide covers everything you need to know.
+
+**Key Benefits**
+
+- Benefit 1 of {keyword}
+- Benefit 2 of {keyword}
 - Benefit 3 of {keyword}
 
-**SEO Statistics**  
-- Search Volume: {seo_metrics['search_volume']}  
-- Difficulty: {seo_metrics['keyword_difficulty']}  
-- Average CPC: ${seo_metrics['avg_cpc']}
+**SEO Statistics**
 
-**Product Recommendations**  
-- [Product 1]({{AFF_LINK_1}})  
-- [Product 2]({{AFF_LINK_2}})  
-- [Product 3]({{AFF_LINK_3}})
+- Volume: {seo_metrics['search_volume']}
+- Difficulty: {seo_metrics['keyword_difficulty']}
+- CPC: ${seo_metrics['avg_cpc']}
 
-**Conclusion**  
-{keyword} can improve your life in many ways. Try it today!
+**Product Recommendations**
+
+- [Awesome Product 1]({{AFF_LINK_1}})
+- [Awesome Product 2]({{AFF_LINK_2}})
+- [Awesome Product 3]({{AFF_LINK_3}})
+
+**Conclusion**
+
+Whether you're new or experienced, {keyword} can make your life better!
 """
+    else:
+        prompt = f"""
+Write a 700-word blog post for the keyword "{keyword}" with this structure:
+- Introduction (with keyword)
+- Key benefits
+- SEO statistics: Volume: {seo_metrics['search_volume']}, Difficulty: {seo_metrics['keyword_difficulty']}, CPC: ${seo_metrics['avg_cpc']}
+- Product Recommendations with affiliate links (use placeholders like {{AFF_LINK_1}})
+- Conclusion
+
+Include markdown headers, bullet points, and bold text. Write in a friendly, engaging tone.
+"""
+        response = openai.ChatCompletion.create(
+            model="gpt-3.5-turbo",
+            messages=[{"role": "user", "content": prompt}]
+        )
+        blog_post = response['choices'][0]['message']['content']
+
+    # Replace affiliate link placeholders with dummy URLs
+    for i in range(1, 4):
+        blog_post = blog_post.replace(f"{{{{AFF_LINK_{i}}}}}", f"https://example.com/affiliate/{keyword}/{i}")
+
+    return blog_post, seo_metrics
