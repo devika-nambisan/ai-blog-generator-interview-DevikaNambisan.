@@ -2,8 +2,6 @@
 
 This app generates a blog post using OpenAI based on a keyword. Includes SEO metrics and placeholder affiliate links.
 
-# AI Blog Generator
-
 ## Setup
 
 1. Clone the repo.
